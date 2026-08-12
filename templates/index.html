@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asesoría integral en SG-SST, BPM, gestión ambiental, sanitaria, saneamiento y cumplimiento normativo.">
+    <title>Asesoría Integral | Calidad, Seguridad y Cumplimiento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="#inicio" class="brand" aria-label="Inicio">
+            <span class="brand-mark">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <path d="M32 5 52 12v15c0 14-8 24-20 32C20 51 12 41 12 27V12z"/>
+                    <path d="M20 31l8 8 17-19"/>
+                </svg>
+            </span>
+            <span>
+                <strong>ASESORÍA INTEGRAL</strong>
+                <small>CALIDAD · SEGURIDAD · CUMPLIMIENTO</small>
+            </span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+
+        <nav class="main-nav" id="mainNav">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#metodologia">Cómo trabajamos</a>
+            <a href="#casos">Casos reales</a>
+            <a href="#sectores">Sectores</a>
+            <a href="#normatividad">Normatividad</a>
+            <a href="#contacto" class="nav-cta">Contacto</a>
+            <a href="{{ url_for('portal') }}" class="nav-login">Portal clientes</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero" id="inicio">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <span class="eyebrow">CONSULTORÍA TÉCNICA Y ACOMPAÑAMIENTO</span>
+                <h1>Cumplimiento que protege y organiza tu empresa</h1>
+                <p>
+                    Soluciones en Seguridad y Salud en el Trabajo, inocuidad alimentaria,
+                    saneamiento, gestión ambiental y sanitaria, auditoría y cumplimiento.
+                    Convertimos los requisitos en planes claros, documentos útiles y seguimiento verificable.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contacto" class="btn btn-primary">Solicitar asesoría</a>
+                    <a href="#servicios" class="btn btn-secondary">Conocer servicios</a>
+                </div>
+
+                <div class="hero-points">
+                    <span>✓ Diagnóstico técnico</span>
+                    <span>✓ Planes a la medida</span>
+                    <span>✓ Acompañamiento</span>
+                    <span>✓ Seguimiento</span>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-visual hero-training">
+                    <img src="{{ url_for('static', filename='img/hero-induccion-restaurante.svg') }}" alt="Consultor realizando una inducción de seguridad, inocuidad y cumplimiento al personal de un restaurante">
+                    <div class="hero-training-badge">
+                        <span>ACOMPAÑAMIENTO EN CAMPO</span>
+                        <strong>Inducción, capacitación e implementación real</strong>
+                        <small>SG-SST · BPM · Saneamiento · Cumplimiento</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-strip">
+        <div class="container trust-grid">
+            <div><b>Enfoque práctico</b><span>Requisitos llevados a la operación</span></div>
+            <div><b>Documentación organizada</b><span>Formatos, registros y evidencias</span></div>
+            <div><b>Acompañamiento técnico</b><span>Antes, durante y después de la implementación</span></div>
+            <div><b>Preparación para visitas</b><span>Autoridades, auditorías y entes de control</span></div>
+        </div>
+    </section>
+
+    <section class="section" id="servicios">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">NUESTROS SERVICIOS</span>
+                <h2>Soluciones especializadas para cada necesidad</h2>
+                <p>No usamos paquetes rígidos: el alcance se ajusta al tipo de organización, actividad, nivel de riesgo y estado actual del sistema.</p>
+            </div>
+
+            <div class="services-grid">
+                {% for servicio in servicios %}
+                <article class="service-card">
+                    <div class="service-icon icon-{{ servicio.icon }}">
+                        {% if servicio.icon == "shield" %}
+                        <svg viewBox="0 0 64 64"><path d="M32 5 52 12v15c0 14-8 24-20 32C20 51 12 41 12 27V12z"/><path d="m21 31 7 7 15-17"/></svg>
+                        {% elif servicio.icon == "food" %}
+                        <svg viewBox="0 0 64 64"><path d="M14 8v18m8-18v18m-4-18v18m-4 0h8m-4 0v30M42 8c-8 10-7 21 2 25v25m0-25c9-4 10-15 2-25"/></svg>
+                        {% elif servicio.icon == "clean" %}
+                        <svg viewBox="0 0 64 64"><path d="M22 8h20l4 46H18z"/><path d="M25 18h14M30 8V3h4v5M23 37c7-6 12-6 19 0"/></svg>
+                        {% elif servicio.icon == "leaf" %}
+                        <svg viewBox="0 0 64 64"><path d="M52 10C30 11 13 21 12 42c13 8 35 3 40-32Z"/><path d="M15 48c8-14 17-22 31-30"/></svg>
+                        {% elif servicio.icon == "training" %}
+                        <svg viewBox="0 0 64 64"><path d="M8 18 32 8l24 10-24 10z"/><path d="M18 24v18c8 7 20 7 28 0V24M56 18v22"/></svg>
+                        {% else %}
+                        <svg viewBox="0 0 64 64"><circle cx="29" cy="29" r="17"/><path d="m41 41 14 14M22 29l5 5 10-12"/></svg>
+                        {% endif %}
+                    </div>
+                    <h3>{{ servicio.titulo }}</h3>
+                    <p>{{ servicio.resumen }}</p>
+                    <ul>
+                        {% for punto in servicio.destacados[:5] %}
+                        <li>{{ punto }}</li>
+                        {% endfor %}
+                    </ul>
+                    <button class="text-link service-open" data-service="{{ servicio.id }}">Ver alcance completo →</button>
+
+                    <div class="service-data" id="data-{{ servicio.id }}" hidden>
+                        <h3>{{ servicio.titulo }}</h3>
+                        <p>{{ servicio.resumen }}</p>
+                        <ul>
+                            {% for punto in servicio.destacados %}
+                            <li>{{ punto }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="metodologia">
+        <div class="container">
+            <div class="section-heading compact">
+                <span class="eyebrow">CÓMO TRABAJAMOS</span>
+                <h2>Un proceso claro, práctico y orientado a resultados</h2>
+            </div>
+
+            <div class="process-grid">
+                <article>
+                    <span class="step-number">01</span>
+                    <h3>Diagnóstico</h3>
+                    <p>Revisamos la situación actual, las condiciones de operación, los documentos existentes y los requisitos aplicables.</p>
+                </article>
+                <article>
+                    <span class="step-number">02</span>
+                    <h3>Plan de acción</h3>
+                    <p>Priorizamos brechas, responsables, entregables, actividades y necesidades de capacitación.</p>
+                </article>
+                <article>
+                    <span class="step-number">03</span>
+                    <h3>Implementación</h3>
+                    <p>Desarrollamos o actualizamos documentos, programas, formatos, controles y estrategias.</p>
+                </article>
+                <article>
+                    <span class="step-number">04</span>
+                    <h3>Seguimiento</h3>
+                    <p>Verificamos evidencias, ejecutamos inspecciones, revisamos hallazgos y acompañamos acciones de mejora.</p>
+                </article>
+                <article>
+                    <span class="step-number">05</span>
+                    <h3>Preparación</h3>
+                    <p>Organizamos la documentación y fortalecemos la operación para auditorías, visitas y evaluaciones.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cases-section" id="casos">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">EXPERIENCIA APLICADA</span>
+                <h2>Casos reales desarrollados con empresas y establecimientos</h2>
+                <p>Estos ejemplos muestran trabajos ejecutados en contextos reales. Se presentan sin valores comerciales y destacando la necesidad, el alcance técnico y las actividades desarrolladas.</p>
+            </div>
+            <div class="cases-grid">
+                <article class="case-card">
+                    <div class="case-top"><span class="case-type">SG-SST + Saneamiento</span><span class="case-status">Caso real</span></div>
+                    <h3>CARIÑO SAS</h3>
+                    <p class="case-summary">Acompañamiento para el mantenimiento del Sistema de Seguridad y Salud en el Trabajo y actualización del plan de saneamiento.</p>
+                    <div class="case-detail"><span>Trabajo desarrollado</span><ul>
+                        <li>Plan de trabajo y actualización documental del SG-SST.</li>
+                        <li>Políticas, procedimientos, instructivos, registros y planes de mejora.</li>
+                        <li>Acompañamiento a COPASST, Comité de Convivencia y plan de emergencias.</li>
+                        <li>Inspecciones, capacitación y preparación para auditorías de ARL o Ministerio del Trabajo.</li>
+                        <li>Revisión y actualización de programas de saneamiento e inspecciones periódicas.</li>
+                    </ul></div>
+                </article>
+                <article class="case-card featured-case">
+                    <div class="case-top"><span class="case-type">BPM e inocuidad</span><span class="case-status">Caso real</span></div>
+                    <h3>AVOGREEN</h3>
+                    <p class="case-summary">Diseño e implementación por fases de un sistema de Buenas Prácticas de Manufactura para empaque, almacenamiento, transporte y distribución de productos agrícolas frescos.</p>
+                    <div class="case-detail"><span>Trabajo desarrollado</span><ul>
+                        <li>Diagnóstico de instalaciones y definición del plan de acción.</li>
+                        <li>Diseño documental de 17 programas prerrequisito BPM.</li>
+                        <li>POES, formatos de registro y sistema documental organizado.</li>
+                        <li>Trazabilidad, recepción, almacenamiento, transporte y control de proveedores.</li>
+                        <li>Capacitación del personal e implementación operativa de los programas.</li>
+                    </ul></div>
+                </article>
+                <article class="case-card">
+                    <div class="case-top"><span class="case-type">Saneamiento + Emergencias</span><span class="case-status">Caso real</span></div>
+                    <h3>Atlas</h3>
+                    <p class="case-summary">Estructuración de un plan de saneamiento y un plan de emergencias ajustados a las necesidades operativas de un establecimiento de alimentos.</p>
+                    <div class="case-detail"><span>Trabajo desarrollado</span><ul>
+                        <li>Limpieza y desinfección, POES, plagas, residuos y agua potable.</li>
+                        <li>Formatos para trazabilidad y seguimiento de los programas.</li>
+                        <li>Caracterización del establecimiento y análisis de amenazas y vulnerabilidad.</li>
+                        <li>Rutas de evacuación, alarma, puntos de encuentro y recursos de emergencia.</li>
+                        <li>Capacitación para implementación y divulgación de los planes.</li>
+                    </ul></div>
+                </article>
+                <article class="case-card">
+                    <div class="case-top"><span class="case-type">Capacitación alimentaria</span><span class="case-status">Caso real</span></div>
+                    <h3>Grupo Colorado</h3>
+                    <p class="case-summary">Estructuración del plan de capacitación continua y permanente en manipulación higiénica de alimentos para el personal del establecimiento.</p>
+                    <div class="case-detail"><span>Trabajo desarrollado</span><ul>
+                        <li>Revisión y actualización del programa de capacitación.</li>
+                        <li>Diseño del cronograma anual de formación.</li>
+                        <li>Definición de contenidos adaptados al establecimiento.</li>
+                        <li>Seguimiento a necesidades de mejora derivadas de visitas sanitarias.</li>
+                        <li>Formación periódica para mantener actualizados los conocimientos del personal.</li>
+                    </ul></div>
+                </article>
+            </div>
+            <div class="cases-note"><div><strong>Más que documentos:</strong><span> los proyectos se desarrollan con diagnóstico, implementación, capacitación y seguimiento.</span></div><a href="#contacto" class="btn btn-secondary">Consultar un caso similar</a></div>
+        </div>
+    </section>
+
+    <section class="section" id="sectores">
+        <div class="container sectors-layout">
+            <div>
+                <span class="eyebrow">SECTORES QUE ATENDEMOS</span>
+                <h2>Servicios adaptados a la realidad de cada operación</h2>
+                <p>
+                    La metodología se ajusta al tipo de establecimiento y a sus procesos. 
+                    Esto permite trabajar tanto con organizaciones que apenas están estructurando sus sistemas
+                    como con empresas que requieren mantenimiento, actualización o preparación para una visita.
+                </p>
+            </div>
+            <div class="sector-tags">
+                <span>Empresas de servicios</span>
+                <span>Industria y manufactura</span>
+                <span>Restaurantes y alimentos</span>
+                <span>Empaque y distribución</span>
+                <span>IPS y centros médicos</span>
+                <span>Consultorios odontológicos</span>
+                <span>Laboratorios</span>
+                <span>Centros de diagnóstico</span>
+                <span>Establecimientos generadores de residuos</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section compliance-section" id="normatividad">
+        <div class="container compliance-grid">
+            <div class="compliance-copy">
+                <span class="eyebrow light">CUMPLIMIENTO NORMATIVO</span>
+                <h2>La documentación debe servir para demostrar y mantener el cumplimiento</h2>
+                <p>
+                    Cada servicio parte de la revisión de requisitos aplicables. La normativa se valida
+                    de acuerdo con la actividad, el tamaño, los procesos, los riesgos y las características
+                    propias de cada organización.
+                </p>
+                <a href="#contacto" class="btn btn-light">Solicitar diagnóstico</a>
+            </div>
+
+            <div class="norm-list">
+                <div><b>SG-SST</b><span>Decreto 1072 de 2015 · Resolución 0312 de 2019</span></div>
+                <div><b>Inocuidad y BPM</b><span>Resolución 2674 de 2013 · requisitos sanitarios aplicables</span></div>
+                <div><b>Materiales en contacto con alimentos</b><span>Resoluciones 683 y 4143 de 2012, según aplique</span></div>
+                <div><b>Gestión de residuos en atención en salud</b><span>Resolución 591 de 2024, según aplicabilidad</span></div>
+                <div><b>Otros requisitos</b><span>Normas, autoridades, ARL y requisitos sectoriales aplicables a cada caso</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contacto">
+        <div class="container contact-grid">
+            <div class="contact-copy">
+                <span class="eyebrow">SOLICITA UNA ASESORÍA</span>
+                <h2>Cuéntanos qué necesita tu empresa</h2>
+                <p>
+                    No publicamos precios porque el alcance depende del diagnóstico, el tamaño de la organización,
+                    las sedes, la actividad económica y el nivel de acompañamiento requerido.
+                </p>
+
+                <div class="contact-details">
+                    <div>
+                        <span>Correo</span>
+                        <a href="mailto:procesosdegestionintegral@gmail.com">procesosdegestionintegral@gmail.com</a>
+                    </div>
+                    <div>
+                        <span>Teléfono</span>
+                        <a href="tel:+573007927658">+57 300 792 7658</a>
+                    </div>
+                    <div>
+                        <span>Profesional</span>
+                        <p>Rocío Quiroga · Ing. de Producción · Especialista en SST e Inocuidad Alimentaria</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <label>
+                        Nombre *
+                        <input type="text" name="nombre" required>
+                    </label>
+                    <label>
+                        Empresa
+                        <input type="text" name="empresa">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        Correo *
+                        <input type="email" name="email" required>
+                    </label>
+                    <label>
+                        Teléfono
+                        <input type="tel" name="telefono">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        Servicio de interés
+                        <select name="servicio">
+                            <option value="">Selecciona una opción</option>
+                            <option>SG-SST</option>
+                            <option>BPM e inocuidad</option>
+                            <option>Plan de saneamiento</option>
+                            <option>Gestión ambiental y sanitaria</option>
+                            <option>Capacitación</option>
+                            <option>Auditoría y cumplimiento</option>
+                            <option>Otro</option>
+                        </select>
+                    </label>
+                    <label>
+                        Sector
+                        <input type="text" name="sector" placeholder="Ej. restaurante, IPS, servicios...">
+                    </label>
+                </div>
+
+                <label>
+                    Describe brevemente tu necesidad *
+                    <textarea name="necesidad" rows="5" required placeholder="Cuéntanos qué deseas implementar, actualizar o revisar."></textarea>
+                </label>
+
+                <button type="submit" class="btn btn-primary submit-btn">Enviar solicitud</button>
+                <p class="form-message" id="formMessage" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <a href="#inicio" class="brand footer-brand">
+                <span class="brand-mark">
+                    <svg viewBox="0 0 64 64"><path d="M32 5 52 12v15c0 14-8 24-20 32C20 51 12 41 12 27V12z"/><path d="M20 31l8 8 17-19"/></svg>
+                </span>
+                <span>
+                    <strong>ASESORÍA INTEGRAL</strong>
+                    <small>CALIDAD · SEGURIDAD · CUMPLIMIENTO</small>
+                </span>
+            </a>
+            <p>Acompañamiento técnico para convertir requisitos en procesos claros, verificables y sostenibles.</p>
+        </div>
+        <div>
+            <h4>Navegación</h4>
+            <a href="#servicios">Servicios</a>
+            <a href="#metodologia">Cómo trabajamos</a>
+            <a href="#casos">Casos reales</a>
+            <a href="#sectores">Sectores</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <div>
+            <h4>Servicios</h4>
+            <a href="#servicios">SG-SST</a>
+            <a href="#servicios">BPM e inocuidad</a>
+            <a href="#servicios">Ambiental y sanitaria</a>
+            <a href="#servicios">Auditorías</a>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <a href="mailto:procesosdegestionintegral@gmail.com">procesosdegestionintegral@gmail.com</a>
+            <a href="tel:+573007927658">+57 300 792 7658</a>
+            <span>Bogotá, Colombia</span>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        <span>© 2026 Asesoría Integral</span>
+        <span>La aplicabilidad normativa se determina según cada organización.</span>
+    </div>
+</footer>
+
+<div class="modal" id="serviceModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" data-close-modal aria-label="Cerrar">×</button>
+        <div id="modalContent"></div>
+        <a href="#contacto" class="btn btn-primary modal-cta" data-close-modal>Solicitar asesoría</a>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
