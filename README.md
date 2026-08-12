@@ -24,12 +24,12 @@ Primera versión funcional del sitio web público desarrollado en Python + Flask
 
 ## Casos reales incluidos
 
-- CARIÑO SAS: mantenimiento SG-SST y plan de saneamiento.
-- AVOGREEN: implementación por fases de BPM.
-- Atlas: plan de saneamiento y plan de emergencias.
-- Grupo Colorado: plan de capacitación en manipulación higiénica de alimentos.
+- Empresa con sistema SG-SST y saneamiento: mantenimiento SG-SST y plan de saneamiento.
+- Empresa de empaque y distribución de alimentos frescos: implementación por fases de BPM.
+- Establecimiento del sector gastronómico: plan de saneamiento y plan de emergencias.
+- Empresa del sector de alimentos: plan de capacitación en manipulación higiénica de alimentos.
 
-Los casos se muestran sin precios y con enfoque en alcance y actividades ejecutadas.
+Por confidencialidad, los casos se muestran sin nombres de clientes ni precios, con enfoque exclusivo en el alcance y las actividades ejecutadas.
 
 ## Imagen principal
 
