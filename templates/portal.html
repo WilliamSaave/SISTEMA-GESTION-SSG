@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de clientes | Asesoría Integral</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="portal-page">
+    <main class="portal-shell">
+        <a href="{{ url_for('index') }}" class="brand portal-brand">
+            <span class="brand-mark">
+                <svg viewBox="0 0 64 64"><path d="M32 5 52 12v15c0 14-8 24-20 32C20 51 12 41 12 27V12z"/><path d="M20 31l8 8 17-19"/></svg>
+            </span>
+            <span>
+                <strong>ASESORÍA INTEGRAL</strong>
+                <small>CALIDAD · SEGURIDAD · CUMPLIMIENTO</small>
+            </span>
+        </a>
+
+        <section class="portal-card">
+            <span class="eyebrow">PORTAL DE CLIENTES</span>
+            <h1>Módulo preparado para la siguiente fase</h1>
+            <p>
+                Esta primera versión se concentra en el sitio público. Aquí se conectará después
+                el acceso privado para clientes, responsables, consultores y administradores.
+            </p>
+            <div class="portal-features">
+                <span>Proyectos y actividades</span>
+                <span>Documentos y evidencias</span>
+                <span>Planes de acción</span>
+                <span>Seguimiento de hallazgos</span>
+                <span>Indicadores</span>
+                <span>Notificaciones</span>
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Volver al sitio</a>
+        </section>
+    </main>
+</body>
+</html>
