@@ -1,3 +1,15 @@
+// Logo principal del encabezado: símbolo de gestión integral, seguridad y sostenibilidad.
+const headerLogo = document.querySelector(".site-header .brand-mark");
+if (headerLogo) {
+  headerLogo.innerHTML = `
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="27"></circle>
+      <path d="M18 35c8-11 17-17 30-20-1 14-8 25-20 29-5 2-10-1-10-9Z"></path>
+      <path d="M20 43c7-9 14-15 25-21"></path>
+      <path d="m24 34 6 6 12-14"></path>
+    </svg>`;
+}
+
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 
